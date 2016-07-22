@@ -86,11 +86,11 @@ param ($increment  = 1000)
 begin{$i=0;$timer = [diagnostics.stopwatch]::startnew()}
 process {
     $i++
-    if (!($i % $increment)){Write-host ì`rProcessed $i in $($timer.elapsed.totalseconds) secondsî -nonewline}
+    if (!($i % $increment)){Write-host ‚Äú`rProcessed $i in $($timer.elapsed.totalseconds) seconds‚Äù -nonewline}
     $_
     }
 end {
-	write-host ì`rProcessed $i log records in $($timer.elapsed.totalseconds) secondsî
+	write-host ‚Äú`rProcessed $i log records in $($timer.elapsed.totalseconds) seconds‚Äù
 	Write-Host "   Average rate: $([int]($i/$timer.elapsed.totalseconds)) log recs/sec."
 	}
 }
@@ -215,14 +215,14 @@ Write-Host "DL usage stats file is $dl_stat_file"
 
 #Setting Variables For Email
 
-$smtpServer = "192.168.0.18"
+$smtpServer = "IPofServertoSendMail"
 $file = $outfile
 $att = new-object Net.Mail.Attachment($file)
 $msg = new-object Net.Mail.MailMessage
 $smtp = new-object Net.Mail.SmtpClient($smtpServer)
-$msg.From = "jwagner@mason-ind.com"
-$msg.To.Add("service@jrdtech.com")
-$msg.Subject = "Daily Stats from EXSVR4"
+$msg.From = "bob@bob.com"
+$msg.To.Add("bob@bob.com")
+$msg.Subject = "Daily Stats from Exchange"
 $msg.Body = "This is an Automated PowerShell script that creates this data and sends it out daily at 6pm"
 $msg.Attachments.Add($att)
 $smtp.Send($msg)
