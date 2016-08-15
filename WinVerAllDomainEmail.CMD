@@ -1,6 +1,6 @@
 @echo OFF
 (for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A) > DCWinVer.ps1
-powershell.exe -noexit "& '.\DCWinVer.ps1'"
+powershell.exe -ExecutionPolicy Bypass -noexit "& '.\DCWinVer.ps1'"
 :eof
 
 :::import-module activedirectory
